@@ -1,0 +1,43 @@
+nav {
+    background-color: #333333;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .izquierda {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #ffcc00;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  .name{
+    color: #ffcc00;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  li {
+    color: #ffcc00;
+    margin-right: 20px;
+    font-weight: bold;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #ffcc00;
+    font-weight: bold;
+  }
