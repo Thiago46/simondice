@@ -1,15 +1,15 @@
 import React from 'react';
-import '../visual/conteiner'
+import '../visual/conteiner.css'
 
-function conteiner(){
+function Conteiner() {
   return (
-    <div class="parent">
-    <div class="div1"> </div>
-    <div class="div2"> </div>
-    <div class="div3"> </div>
-    <div class="div4"> </div>
+    <div class="botonera">
+      <button className="div1"> </button>
+      <button className="div2"> </button>
+      <button className="div3"> </button>
+      <button className="div4"> </button>
     </div> 
   );
 }
 
-export default conteiner;
+export default Conteiner;
