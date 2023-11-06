@@ -1,7 +1,7 @@
 import React from 'react';
 import '../visual/navbar.css'
 
-function navbar(){
+function navbar() {
   return (
     <nav>
       <div className="izquierda">
@@ -10,9 +10,9 @@ function navbar(){
       </div>
       <ul>
         <li>Inicio</li>
-        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="">Sobre nosotros</a></li>
+        <li><a href="">Servicios</a></li>
+        <li><a href="">Contacto</a></li>
       </ul>
     </nav>
   );
