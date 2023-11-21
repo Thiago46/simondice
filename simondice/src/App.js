@@ -3,7 +3,7 @@ import './App.css';
 
 import Navbar from './componentes/navbar';
 import Footer from './componentes/footer';
-import Tablero from './componentes/tablero'
+import SimonDice from './componentes/simondice';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <div>
         <div className="background-svg"></div>
         <Navbar />
-        <Tablero />
+        <SimonDice />
         <Footer />
       </div>
     );
