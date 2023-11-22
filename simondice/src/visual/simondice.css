@@ -1,83 +1,105 @@
 /* Estilo para el contenedor principal */
-div {
-    text-align: center;
-  }
-  
-  /* Estilo para el título */
-  h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-  }
+body {
+  width: 800px;
+  height: 800px;
+  font-family: 'Arial', sans-serif;
+  background-color: #ecf0f1; /* Gris claro */
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 
-  /* Agrega estilos para el botón de inicio */
+/* Estilo para el título */
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilo para el botón de inicio */
 #startButton {
-    background-color: #2ecc71; /* Verde */
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilo para el mensaje del primer color */
-  p {
-    font-size: 1.2em;
-    color: #333;
-  }
-  
-  
-  /* Estilo para los botones de colores */
-  button {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Colores de los botones */
-  button:nth-child(1) {
-    background-color: #e74c3c; /* Rojo */
-    color: white;
-  }
-  
-  button:nth-child(2) {
-    background-color: #2ecc71; /* Verde */
-    color: white;
-  }
-  
-  button:nth-child(3) {
-    background-color: #3498db; /* Azul */
-    color: white;
-  }
-  
-  button:nth-child(4) {
-    background-color: #f1c40f; /* Amarillo */
-    color: black;
-  }
-  
-  /* Estilo cuando se ilumina el color */
-  button.iluminado {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
-  }
-  
-  /* Estilo para el botón de reinicio */
-  #resetButton {
-    background-color: #ecf0f1; /* Gris claro */
-    color: #333;
-  }
-  
-  /* Estilo para el mensaje de pérdida */
-  .perdiste {
-    color: #e74c3c; /* Rojo */
-    font-size: 1.5em;
-    margin-top: 20px;
-  }
-  
+  background-color: #2ecc71; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+#startButton:hover {
+  background-color: #27ae60; /* Verde más oscuro al pasar el ratón */
+}
+
+/* Estilo para el mensaje del primer color */
+p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Estilo para los botones de colores */
+button {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Colores de los botones */
+button:nth-child(1) {
+  background-color: #e74c3c; /* Rojo */
+  color: white;
+}
+
+button:nth-child(2) {
+  background-color: #2ecc71; /* Verde */
+  color: white;
+}
+
+button:nth-child(3) {
+  background-color: #3498db; /* Azul */
+  color: white;
+}
+
+button:nth-child(4) {
+  background-color: #f1c40f; /* Amarillo */
+  color: black;
+}
+f1c40f
+/* Estilo cuando se ilumina el color */
+button.iluminado {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+/* Estilo para el botón de reinicio */
+#resetButton {
+  background-color: #ecf0f1; /* Gris claro */
+  color: #333;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-top: 20px;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+#resetButton:hover {
+  background-color: #bdc3c7; /* Gris más oscuro al pasar el ratón */
+}
+
+/* Estilo para el mensaje de pérdida */
+.perdiste {
+  color: #e74c3c; /* Rojo */
+  font-size: 1.5em;
+  margin-top: 20px;
+}

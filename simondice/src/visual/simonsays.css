@@ -1,0 +1,74 @@
+.conteiner {
+    display: grid;
+    justify-content: center;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.botones {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.rojo {
+    background-color: #e74c3c; /* Rojo */
+    color: white;
+    border: none;
+    border-radius: 0 0 0 100%;
+    width: 200px;
+    height: 200px;
+}
+
+.verde {
+    background-color: #2ecc71; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 100% 0 0 0;
+    width: 200px;
+    height: 200px;
+}
+
+.azul {
+    background-color: #3498db; /* Azul */
+    color: white;
+    border: none;
+    border-radius: 0 100% 0 0 ;
+    width: 200px;
+    height: 200px;
+}
+
+.amarillo {
+    background-color: #f1c40f; /* Amarillo */
+    color: white;
+    border: none;
+    border-radius: 0 0 100% 0;
+    width: 200px;
+    height: 200px;
+}
+
+.encendido {
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 1);
+}
+
+.btn-inicio {
+    background-color: #333;
+    color: #ffcc00;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    border-radius: 100% ;
+    border: none;
+    width: 250px;
+    height: 250px;
+    
+}
+
+.puntuacion{
+    color: #ffcc00;
+    align-self: center;
+    justify-self: center;
+}

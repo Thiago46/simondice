@@ -1,123 +1,105 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../visual/simondice.css';
 
-class SimonDice extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      secuencia: [],
-      intentoUsuario: [],
-      paso: 0,
-      juegoIniciado: false,
-      puntaje: 0,
-    };
-  }
+function SimonDice () {
+  const [secuencia, setSecuencia] = useState([]);
+  const [intentoUsuario, setIntentoUsuario] = useState([]);
+  const [paso, setPaso] = useState(0);
+  const [juegoIniciado, setJuegoIniciado] = useState(false);
+  const [puntaje, setPuntaje] = useState(0);
 
-  componentDidMount() {
-    // Elimina la llamada a nuevaSecuencia desde componentDidMount
-    // this.nuevaSecuencia();
-  }
+  const iluminarColor = (color) => {
+    const button = document.getElementById(`colorButton${color}`);
+    if (button) {
+      button.classList.add('iluminado');
 
-  iluminarColor = (color) => {
-    console.log(`Iluminar color: ${color}`);
-    // Aquí podrías implementar la lógica para iluminar el color en tu interfaz.
-    // Por simplicidad, solo lograremos el color por ahora.
-  };
-
-  mostrarSecuencia = () => {
-    const { secuencia } = this.state;
-    let paso = 0;
-
-    const mostrar = setInterval(() => {
-      if (paso === secuencia.length) {
-        clearInterval(mostrar);
-      } else {
-        this.iluminarColor(secuencia[paso]);
-        paso += 1;
-      }
-    }, 1000);
-  };
-
-  nuevaSecuencia = () => {
-    const { secuencia, puntaje } = this.state;
-    const nuevoColor = Math.floor(Math.random() * 4);
-    this.setState(
-      {
-        secuencia: [...secuencia, nuevoColor],
-        intentoUsuario: [],
-        paso: 0,
-        puntaje: puntaje + 1, // Incrementa el puntaje por cada nueva secuencia
-      },
-      () => {
-        this.mostrarSecuencia();
-      }
-    );
-  };
-
-  manejarClick = (color) => {
-    const { intentoUsuario, paso, secuencia } = this.state;
-    this.iluminarColor(color);
-
-    if (color === secuencia[paso]) {
-      this.setState(
-        {
-          intentoUsuario: [...intentoUsuario, color],
-          paso: paso + 1,
-        },
-        () => {
-          if (paso + 1 === secuencia.length) {
-            setTimeout(() => {
-              this.nuevaSecuencia();
-            }, 1000);
-          }
-        }
-      );
-    } else {
-      console.log('¡Has perdido!');
-      this.resetearJuego();
+      setTimeout(() => {
+        button.classList.remove('iluminado');
+      }, 500);
     }
   };
 
-  resetearJuego = () => {
-    this.setState({
-      secuencia: [],
-      intentoUsuario: [],
-      paso: 0,
-      juegoIniciado: false,
-      puntaje: 0, // Reinicia el puntaje al perder
+  const mostrarSecuencia = () => {
+    secuencia.forEach((color, index) => {
+      setTimeout(() => {
+        iluminarColor(color);
+      }, index * 1000);
     });
   };
 
-  iniciarJuego = () => {
-    this.nuevaSecuencia();
-    this.setState({ juegoIniciado: true });
+  const nuevaSecuencia = () => {
+    const nuevoColor = Math.floor(Math.random() * 4);
+    setSecuencia((prevSecuencia) => [...prevSecuencia, nuevoColor]);
+    setIntentoUsuario([]);
+    setPaso(0);
+    setPuntaje((prevPuntaje) => prevPuntaje + 1);
+    mostrarSecuencia();
   };
 
-  render() {
-    const { juegoIniciado, secuencia, puntaje } = this.state;
+  const manejarClick = (color) => {
+    iluminarColor(color);
 
-    return (
-      <div>
-        <h1>Simón dice</h1>
-        <p>Puntaje: {puntaje}</p>
-        {!juegoIniciado && (
-          <button id="startButton" onClick={this.iniciarJuego}>
-            Iniciar Juego
-          </button>
-        )}
-        {juegoIniciado && (
-          <div>
-            <p>Primer color: {secuencia.length > 0 ? `Color ${secuencia[0]}` : ''}</p>
-            {/* Agrega la interfaz para mostrar los colores y manejar los clics aquí */}
-            <button onClick={() => this.manejarClick(0)}>Color 0</button>
-            <button onClick={() => this.manejarClick(1)}>Color 1</button>
-            <button onClick={() => this.manejarClick(2)}>Color 2</button>
-            <button onClick={() => this.manejarClick(3)}>Color 3</button>
-          </div>
-        )}
+    if (color === secuencia[paso]) {
+      setIntentoUsuario((prevIntento) => [...prevIntento, color]);
+      setPaso((prevPaso) => prevPaso + 1);
+
+      if (paso + 1 === secuencia.length) {
+        setTimeout(() => {
+          nuevaSecuencia();
+        }, 1000);
+      }
+    } else {
+      console.log('¡Has perdido!');
+      resetearJuego();
+    }
+  };
+
+  const resetearJuego = () => {
+    setSecuencia([]);
+    setIntentoUsuario([]);
+    setPaso(0);
+    setJuegoIniciado(false);
+    setPuntaje(0);
+  };
+
+  const iniciarJuego = () => {
+    nuevaSecuencia();
+    setJuegoIniciado(true);
+  };
+
+  useEffect(() => {
+    if (juegoIniciado) {
+      mostrarSecuencia();
+    }
+  }, [secuencia, juegoIniciado]);
+
+  return (
+    <div >
+      <div class="conteiner">
+      <h1>Simón dice</h1>
+      <p>Puntaje: {puntaje}</p>
+      {!juegoIniciado && (
+        <button id="startButton" onClick={iniciarJuego}>
+          Iniciar Juego
+        </button>
+      )}
+      {juegoIniciado && (
+        <div>
+          <p>Primer color: {secuencia.length > 0 ? `Color ${secuencia[0]}` : ''}</p>
+          {[0, 1, 2, 3].map((color) => (
+            <button
+              key={color}
+              id={`colorButton${color}`}
+              onClick={() => manejarClick(color)}
+            >
+              Color {color}
+            </button>
+          ))}
+        </div>
+      )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default SimonDice;
