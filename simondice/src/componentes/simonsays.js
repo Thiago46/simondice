@@ -43,38 +43,50 @@ function simonsay(){
     }
 
     const encender = () => {
-        setDis(false)
-
-        const verde = document.getElementById('verde')
-        const azul = document.getElementById('azul')
-        const rojo = document.getElementById('rojo')
-        const amarillo = document.getElementById('amarillo')
-        verde.classList.remove("encendido")
-        azul.classList.remove("encendido")
-        rojo.classList.remove("encendido")
-        amarillo.classList.remove("encendido")
-
-        if(x < sec.length){
-            if(sec[pos] == 1){
-                setTimeout(() => {encender()}, 500)
-                verde.classList.add("encendido");
+        setDis(true);
+    
+        const verde = document.getElementById('verde');
+        const azul = document.getElementById('azul');
+        const rojo = document.getElementById('rojo');
+        const amarillo = document.getElementById('amarillo');
+    
+        verde.classList.remove("encendido");
+        azul.classList.remove("encendido");
+        rojo.classList.remove("encendido");
+        amarillo.classList.remove("encendido");
+    
+        const encenderBoton = (btn) => {
+            btn.classList.add("encendido");
+            setTimeout(() => {
+                btn.classList.remove("encendido");
+            }, 300);
+        };
+    
+        const encenderSiguiente = () => {
+            if (x < sec.length) {
+                if (sec[x] === 1 ) {                    
+                    encenderBoton(verde);
+                } else if (sec[x] === 2) {
+                    encenderBoton(azul);
+                } else if (sec[x] === 3) {
+                    encenderBoton(rojo);
+                } else {
+                    encenderBoton(amarillo);
+                }
+    
+                x++;
+                setTimeout(() => {
+                    encenderSiguiente();
+                }, 500);
+            } else {
+                setDis(false);
             }
-            else if(sec[pos] == 2){
-                setTimeout(() => {encender()}, 500)
-                azul.classList.add("encendido");
-            }
-            else if(sec[pos] == 3){
-                setTimeout(() => {encender()}, 500)
-                rojo.classList.add("encendido");
-            }
-            else{
-                setTimeout(() => {encender()}, 500)
-                amarillo.classList.add("encendido");
-            }   
-                
-            x ++;
-        }
-    }
+        };
+    
+        encenderSiguiente();
+    };
+    
+    
     
     return(
         <div className="conteiner">
